@@ -52,13 +52,14 @@ Page({
         text: '阅读'
       }
     ],
-    ec: {
-      onInit: this.initChart
-    },
+    ec: {},
     pieData: [],
   },
   onLoad: function () {
-    this.setData({ echarts: echarts });
+    this.setData({ 
+      echarts: echarts,
+      'ec.onInit': this.initChart
+    });
   },
 
   onShow: function () {
