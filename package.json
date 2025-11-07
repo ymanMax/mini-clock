@@ -1,0 +1,8 @@
+{
+  "name": "tomato-clock",
+  "version": "1.0.0",
+  "description": "Tomato Clock WeChat Mini Program",
+  "dependencies": {
+    "echarts-for-weixin": "^1.0.0"
+  }
+}

@@ -1,5 +1,6 @@
 //logs.js
 import {formatTime} from '../utils/util'
+import * as echarts from '../../ec-canvas/echarts'
 
 Page({
   data: {
@@ -51,7 +52,19 @@ Page({
         text: '阅读'
       }
     ],
+    ec: {
+      onInit: function (canvas, width, height) {
+        const chart = echarts.init(canvas, null, { width, height });
+        canvas.setChart(chart);
+        return chart;
+      }
+    },
+    pieData: [],
   },
+  onLoad: function () {
+    this.ecComponent = this.selectComponent('#mychart-dom-pie');
+  },
+
   onShow: function () {
     // this.setData({
     //   logs: (wx.getStorageSync('logs') || []).map(log => {
@@ -90,9 +103,93 @@ Page({
           'sum[3].val':totalTime+'分钟'
         })
       }
+      // 计算今日各维度时间占比
+      this.calculateCateTime();
     
      
   },
+  // 计算各维度时间占比
+  calculateCateTime: function () {
+    const dayList = this.data.dayList;
+    const cateTime = {};
+    
+    // 初始化各分类时间为0
+    this.data.cateArr.forEach(cate => {
+      cateTime[cate.text] = 0;
+    });
+    
+    // 统计各分类时间
+    dayList.forEach(item => {
+      const cateText = this.data.cateArr[item.cate].text;
+      cateTime[cateText] += parseInt(item.time);
+    });
+    
+    // 转换为饼图所需数据格式
+    const pieData = Object.entries(cateTime).map(([name, value]) => ({
+      name,
+      value
+    }));
+    
+    this.setData({
+      pieData
+    });
+    
+    // 绘制饼图
+    this.initChart();
+  },
+
+  // 初始化饼图
+  initChart: function () {
+    this.ecComponent.init((canvas, width, height) => {
+      const chart = echarts.init(canvas, null, { width, height });
+      
+      const option = {
+        tooltip: {
+          trigger: 'item',
+          formatter: '{b}: {c}分钟 ({d}%)'
+        },
+        legend: {
+          orient: 'horizontal',
+          bottom: 0,
+          textStyle: {
+            fontSize: 12
+          }
+        },
+        series: [
+          {
+            name: '时间分布',
+            type: 'pie',
+            radius: ['40%', '70%'],
+            avoidLabelOverlap: false,
+            itemStyle: {
+              borderRadius: 10,
+              borderColor: '#fff',
+              borderWidth: 2
+            },
+            label: {
+              show: false,
+              position: 'center'
+            },
+            emphasis: {
+              label: {
+                show: true,
+                fontSize: 20,
+                fontWeight: 'bold'
+              }
+            },
+            labelLine: {
+              show: false
+            },
+            data: this.data.pieData || []
+          }
+        ]
+      };
+      
+      chart.setOption(option);
+      return chart;
+    });
+  },
+
   changeType:function(e){
     var index = e.currentTarget.dataset.index;
     if(index == 0){

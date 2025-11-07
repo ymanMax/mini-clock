@@ -28,3 +28,8 @@
   </view> -->
 
 </view>
+
+<view class="chart-container">
+  <view class="chart-title">今日时间分布</view>
+  <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}"></ec-canvas>
+</view>
