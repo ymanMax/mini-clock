@@ -53,17 +53,12 @@ Page({
       }
     ],
     ec: {
-      onInit: function (canvas, width, height) {
-        const chart = echarts.init(canvas, null, { width, height });
-        canvas.setChart(chart);
-        return chart;
-      }
+      onInit: this.initChart
     },
     pieData: [],
   },
   onLoad: function () {
     this.setData({ echarts: echarts });
-    this.ecComponent = this.selectComponent('#mychart-dom-pie');
   },
 
   onShow: function () {
@@ -134,61 +129,56 @@ Page({
     this.setData({
       pieData
     });
-    
-    // 绘制饼图
-    this.initChart();
   },
 
   // 初始化饼图
-  initChart: function () {
-    this.ecComponent.init((canvas, width, height) => {
-      const chart = echarts.init(canvas, null, { width, height });
-      
-      const option = {
-        tooltip: {
-          trigger: 'item',
-          formatter: '{b}: {c}分钟 ({d}%)'
-        },
-        legend: {
-          orient: 'horizontal',
-          bottom: 0,
-          textStyle: {
-            fontSize: 12
-          }
-        },
-        series: [
-          {
-            name: '时间分布',
-            type: 'pie',
-            radius: ['40%', '70%'],
-            avoidLabelOverlap: false,
-            itemStyle: {
-              borderRadius: 10,
-              borderColor: '#fff',
-              borderWidth: 2
-            },
+  initChart: function (canvas, width, height) {
+    const chart = echarts.init(canvas, null, { width, height });
+    
+    const option = {
+      tooltip: {
+        trigger: 'item',
+        formatter: '{b}: {c}分钟 ({d}%)'
+      },
+      legend: {
+        orient: 'horizontal',
+        bottom: 0,
+        textStyle: {
+          fontSize: 12
+        }
+      },
+      series: [
+        {
+          name: '时间分布',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 10,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: false,
+            position: 'center'
+          },
+          emphasis: {
             label: {
-              show: false,
-              position: 'center'
-            },
-            emphasis: {
-              label: {
-                show: true,
-                fontSize: 20,
-                fontWeight: 'bold'
-              }
-            },
-            labelLine: {
-              show: false
-            },
-            data: this.data.pieData || []
-          }
-        ]
-      };
-      
-      chart.setOption(option);
-      return chart;
-    });
+              show: true,
+              fontSize: 20,
+              fontWeight: 'bold'
+            }
+          },
+          labelLine: {
+            show: false
+          },
+          data: this.data.pieData || []
+        }
+      ]
+    };
+    
+    chart.setOption(option);
+    return chart;
   },
 
   changeType:function(e){

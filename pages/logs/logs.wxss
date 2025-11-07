@@ -7,7 +7,7 @@
   }
   .sum .sum_item{
     width: 375rpx;
-    height: 160;
+    height: 160rpx;
     text-align: center;
   }
   .sum .sum_item .sum_item_title{
@@ -71,7 +71,6 @@
   ec-canvas {
     width: 100%;
     height: 100%;
-  }
     line-height: 60rpx;
     margin-top: 30rpx;
   }
@@ -83,7 +82,7 @@
     font-size: 30rpx;
     text-align: left;
   }
-  .list_item .list_item_cate{
+  .list_item .list_item_text{
     width: 250rpx;
     font-size: 30rpx;
     text-align: center;
