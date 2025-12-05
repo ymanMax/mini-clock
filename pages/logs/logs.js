@@ -53,7 +53,7 @@ Page({
       }
     ],
     ec: {
-      onInit: this.initChart
+      onInit: (canvas, width, height) => this.initChart(canvas, width, height)
     },
     pieData: [],
   },
@@ -129,11 +129,20 @@ Page({
     this.setData({
       pieData
     });
+
+    // 如果图表已经初始化，更新图表数据
+    if (this.chart) {
+      this.chart.setOption({
+        series: [{
+          data: pieData
+        }]
+      });
+    }
   },
 
   // 初始化饼图
   initChart: function (canvas, width, height) {
-    const chart = echarts.init(canvas, null, { width, height });
+    this.chart = echarts.init(canvas, null, { width, height });
     
     const option = {
       tooltip: {
@@ -177,8 +186,8 @@ Page({
       ]
     };
     
-    chart.setOption(option);
-    return chart;
+    this.chart.setOption(option);
+    return this.chart;
   },
 
   changeType:function(e){
