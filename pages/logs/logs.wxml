@@ -29,7 +29,14 @@
 
 </view>
 
+
 <view class="chart-container">
   <view class="chart-title">今日时间分布</view>
-  <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" echarts="{{ echarts }}" ec="{{ ec }}"></ec-canvas>
+  <canvas
+    canvas-id="pieChart"
+    class="pie-chart-canvas"
+    bindtouchstart="onChartTouchStart"
+    bindtouchmove="onChartTouchMove"
+    bindtouchend="onChartTouchEnd">
+  </canvas>
 </view>
