@@ -18,12 +18,12 @@
       <view class="game-desc">即将上线，敬请期待</view>
     </view>
     
-    <view class="game-item disabled">
+    <view class="game-item" bindtap="navigateToGame" data-game="match">
       <view class="game-icon">
         <text class="game-icon-text">💥</text>
       </view>
       <view class="game-name">开心消消乐</view>
-      <view class="game-desc">即将上线，敬请期待</view>
+      <view class="game-desc">经典消除游戏，挑战高分</view>
     </view>
     
     <view class="game-item disabled">

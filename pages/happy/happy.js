@@ -20,11 +20,16 @@ Page({
   // 导航到游戏页面
   navigateToGame: function (e) {
     const game = e.currentTarget.dataset.game;
-    
+
     switch (game) {
       case 'snake':
         wx.navigateTo({
           url: '/pages/snake/snake'
+        });
+        break;
+      case 'match':
+        wx.navigateTo({
+          url: '/pages/match/match'
         });
         break;
       default:

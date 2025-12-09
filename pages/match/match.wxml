@@ -1,0 +1,51 @@
+<view class="container">
+  <!-- 顶部分数显示 -->
+  <view class="score-section">
+    <view class="score-title">当前分数</view>
+    <view class="score-value">{{score}}</view>
+  </view>
+
+  <!-- 游戏网格 -->
+  <view class="game-board">
+    <view class="grid-container">
+      <view
+        wx:for="{{grid}}"
+        wx:for-item="row"
+        wx:for-index="rowIndex"
+        class="grid-row"
+      >
+        <view
+          wx:for="{{row}}"
+          wx:for-item="letter"
+          wx:for-index="colIndex"
+          wx:key="index"
+          class="grid-cell {{selectedCell && selectedCell.row === rowIndex && selectedCell.col === colIndex ? 'selected' : ''}}"
+          data-row="{{rowIndex}}"
+          data-col="{{colIndex}}"
+          bindtap="onCellTap"
+          style="background-color: {{letterColors[letter]}}; color: #fff;"
+        >
+          {{letter}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部控制按钮 -->
+  <view class="controls-section">
+    <button
+      class="control-btn {{gameState === 'playing' ? 'primary' : 'default'}}"
+      bindtap="{{gameState === 'ready' ? 'startGame' : (gameState === 'playing' ? 'pauseGame' : 'startGame')}}"
+      disabled="{{false}}"
+    >
+      {{gameState === 'ready' ? '开始游戏' : (gameState === 'playing' ? '暂停游戏' : '继续游戏')}}
+    </button>
+
+    <button
+      class="control-btn default"
+      bindtap="resetGame"
+    >
+      重置游戏
+    </button>
+  </view>
+</view>
