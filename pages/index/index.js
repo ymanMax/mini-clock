@@ -2,6 +2,7 @@
 
 const app = getApp()
 import {formatTime} from '../utils/util'
+const {getTasks, addTask} = require('../../utils/tasks.js')
 Page({
     data: {
         clockShow: false,
@@ -10,42 +11,23 @@ Page({
         rate:"",
         timeStr:"05:00",
         timer:null,
-        cateArr: [
-            {
-                icon:"gongzuo.png",
-                text:"工作",
-            },
-            {
-                icon:"xuexi.png",
-                text:"学习",
-            },
-            {
-                icon:"xiezuo.png",
-                text:"写作",
-            },
-            {
-                icon:"yuedu.png",
-                text:"阅读",
-            },
-            {
-                icon:"yule.png",
-                text:"娱乐",
-            }
-        ],
+        cateArr: [], // 从tasks.js获取
         cateActive: "0",
         clockHeight: 0,
         indexHeight: 0,
         okShow:false,
         pauseShow:true,
-        continueCancleShow:false
+        continueCancleShow:false,
+        showAddTaskModal: false // 控制任务弹窗显示
     },
     onLoad: function() {
         var res = wx.getSystemInfoSync();
         var rate = 750 / res.windowWidth;
-        
+
         this.setData({
             rate:rate,
             clockHeight:rate*res.windowHeight,
+            cateArr: getTasks() // 从tasks.js获取任务数据
         })
     },
     slideChange: function(e){
@@ -189,5 +171,39 @@ Page({
             continueCancleShow: false,
             okShow: false
         })
+    },
+
+    // 显示创建任务弹窗
+    showAddTaskModal: function() {
+        this.setData({
+            showAddTaskModal: true
+        });
+    },
+
+    // 隐藏创建任务弹窗
+    hideAddTaskModal: function() {
+        this.setData({
+            showAddTaskModal: false
+        });
+    },
+
+    // 添加新任务
+    addNewTask: function(e) {
+        const newTask = e.detail.task;
+
+        // 添加任务到tasks.js
+        addTask(newTask);
+
+        // 更新页面数据
+        this.setData({
+            cateArr: getTasks() // 重新获取任务数据
+        });
+
+        // 显示成功提示
+        wx.showToast({
+            title: '任务创建成功',
+            icon: 'success',
+            duration: 1500
+        });
     }
 })
