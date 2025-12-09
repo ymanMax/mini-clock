@@ -1,0 +1,211 @@
+/* components/add-task-modal/add-task-modal.wxss */
+
+/* 弹窗容器 */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 蒙层样式 */
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* 弹窗内容样式 */
+.modal-content {
+  position: relative;
+  width: 80%;
+  max-width: 600rpx;
+  background: #ffffff;
+  border-radius: 20rpx; /* 圆角 */
+  box-shadow: 0 10rpx 40rpx rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* 弹窗头部样式 */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* 弹窗标题样式 */
+.modal-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* 关闭按钮样式 */
+.modal-close {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%; /* 圆形关闭按钮 */
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.modal-close:active {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(0.9);
+}
+
+/* 关闭图标样式 */
+.close-icon {
+  font-size: 36rpx;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* 弹窗表单样式 */
+.modal-body {
+  padding: 40rpx 30rpx;
+}
+
+/* 表单项目样式 */
+.form-item {
+  margin-bottom: 40rpx;
+}
+
+/* 表单标签样式 */
+.form-label {
+  display: block;
+  margin-bottom: 15rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+/* 表单输入框样式 */
+.form-input {
+  width: 100%;
+  padding: 20rpx 25rpx;
+  font-size: 28rpx;
+  border: 2rpx solid #eeeeee;
+  border-radius: 10rpx; /* 输入框圆角 */
+  background: #ffffff;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 4rpx rgba(102, 126, 234, 0.1);
+}
+
+.form-input::placeholder {
+  color: #cccccc;
+}
+
+/* 弹窗底部样式 */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-top: 1rpx solid #eeeeee;
+  background: #f8f9fa;
+}
+
+/* 弹窗按钮样式 */
+.modal-btn {
+  flex: 1;
+  padding: 20rpx;
+  margin: 0 15rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  border-radius: 10rpx; /* 按钮圆角 */
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* 取消按钮样式 */
+.modal-btn-cancel {
+  background: #e9ecef;
+  color: #6c757d;
+}
+
+.modal-btn-cancel:active {
+  background: #dee2e6;
+  transform: scale(0.95);
+}
+
+/* 确认按钮样式 */
+.modal-btn-confirm {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+}
+
+.modal-btn-confirm:active {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a418c 100%);
+  transform: scale(0.95);
+}
+
+/* 蒙层动画 */
+@keyframes maskFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes maskFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-mask {
+  animation: maskFadeIn 0.3s ease-out;
+}
+
+/* 弹窗内容动画 */
+@keyframes contentSlideIn {
+  from {
+    transform: translateY(-50px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes contentSlideOut {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-50px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.animate-content {
+  animation: contentSlideIn 0.3s ease-out;
+}

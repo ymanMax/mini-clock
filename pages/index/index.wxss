@@ -73,6 +73,33 @@
     color: #ff5556;
 }
 
+/* 创建任务按钮样式 */
+.task_cate .add-task-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2rpx dashed #ff5556;
+    border-radius: 15rpx;
+    transition: all 0.3s ease;
+}
+
+.task_cate .add-task-btn:active {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(0.95);
+}
+
+/* 创建任务图标样式 */
+.task_cate .add-task-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 创建任务加号样式 */
+.task_cate .add-task-plus {
+    font-size: 40rpx;
+    color: #ff5556;
+    font-weight: bold;
+}
+
 .clock {
     overflow:hidden;
     background-color: #ff5556;

@@ -12,19 +12,33 @@
 
     <view class="task_cate">
         <view wx:for="{{cateArr}}"  class="cate_item" wx:key="cate" bindtap="clickCate" data-index="{{index}}">
-            <view class="cate_icon">  
+            <view class="cate_icon">
                 <image src="../../static/{{item.icon}}">
                 </image>
             </view>
             <view class='cate_text {{index == cateActive ? "cate_text_active":" " }}'>
                 {{item.text}}
-            </view>  
+            </view>
+        </view>
+        <!-- 创建任务按钮 -->
+        <view class="cate_item add-task-btn" bindtap="showAddTaskModal">
+            <view class="cate_icon add-task-icon">
+                <text class="add-task-plus">+</text>
+            </view>
+            <view class="cate_text">创建任务</view>
         </view>
     </view>
 
     <view class="startButton" bindtap="start">
         开始
     </view>
+
+    <!-- 任务弹窗组件 -->
+    <add-task-modal
+        show="{{showAddTaskModal}}"
+        bind:close="hideAddTaskModal"
+        bind:add="addNewTask"
+    ></add-task-modal>
 </view>
 
 <view class="clock"  hidden="{{!clockShow}}" style="height:{{clockHeight}}rpx">
