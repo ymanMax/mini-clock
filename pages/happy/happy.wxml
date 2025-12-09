@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="page-title">小游戏中心</view>
+  
+  <view class="games-grid">
+    <view class="game-item" bindtap="navigateToGame" data-game="snake">
+      <view class="game-icon">
+        <text class="game-icon-text">🐍</text>
+      </view>
+      <view class="game-name">贪吃蛇</view>
+      <view class="game-desc">经典贪吃蛇游戏，挑战高分</view>
+    </view>
+    
+    <view class="game-item disabled">
+      <view class="game-icon">
+        <text class="game-icon-text">🧱</text>
+      </view>
+      <view class="game-name">俄罗斯方块</view>
+      <view class="game-desc">即将上线，敬请期待</view>
+    </view>
+    
+    <view class="game-item disabled">
+      <view class="game-icon">
+        <text class="game-icon-text">💥</text>
+      </view>
+      <view class="game-name">开心消消乐</view>
+      <view class="game-desc">即将上线，敬请期待</view>
+    </view>
+    
+    <view class="game-item disabled">
+      <view class="game-icon">
+        <text class="game-icon-text">🎮</text>
+      </view>
+      <view class="game-name">更多游戏</view>
+      <view class="game-desc">持续更新中...</view>
+    </view>
+  </view>
+</view>
