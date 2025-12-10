@@ -1,0 +1,146 @@
+/* match.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+/* 分数显示区域 */
+.score-section {
+  text-align: center;
+  margin-bottom: 30rpx;
+  background-color: #fff;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600rpx;
+}
+
+.score-title {
+  font-size: 32rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.score-value {
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #ff6b6b;
+}
+
+/* 游戏棋盘 */
+.game-board {
+  background-color: #fff;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 30rpx;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6rpx;
+}
+
+.grid-cell {
+  width: 70rpx;
+  height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 8rpx;
+  margin-right: 6rpx;
+  transition: all 0.3s ease;
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.grid-cell:last-child {
+  margin-right: 0;
+}
+
+.grid-cell:active {
+  transform: scale(0.95);
+}
+
+.grid-cell.selected {
+  transform: scale(1.1);
+  box-shadow: 0 4rpx 12rpx rgba(255, 107, 107, 0.5);
+  border: 3rpx solid #fff;
+}
+
+/* 控制按钮区域 */
+.controls-section {
+  display: flex;
+  justify-content: center;
+  gap: 20rpx;
+  width: 100%;
+  max-width: 600rpx;
+}
+
+.control-btn {
+  padding: 20rpx 40rpx;
+  font-size: 32rpx;
+  border-radius: 12rpx;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.control-btn.primary {
+  background-color: #ff6b6b;
+  color: #fff;
+}
+
+.control-btn.default {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+/* 动画效果 */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes dropDown {
+  from {
+    transform: translateY(-100rpx);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.grid-cell.removing {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+.grid-cell.dropping {
+  animation: dropDown 0.3s ease-out forwards;
+}
