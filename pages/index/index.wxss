@@ -69,6 +69,25 @@
     transform:translateY(-60rpx)
 }
 
+.gameButton {
+    width:280rpx;
+    height:90rpx;
+    line-height: 90rpx;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color:#fff;
+    border-radius: 20rpx;
+    margin: 20rpx auto;
+    text-align: center;
+    display: inline-block;
+    transform:translateY(-60rpx);
+    box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.4);
+}
+
+.gameButton:active {
+    transform:translateY(-55rpx) scale(0.98);
+    box-shadow: 0 2rpx 8rpx rgba(102, 126, 234, 0.3);
+}
+
 .cate_text_active {
     color: #ff5556;
 }

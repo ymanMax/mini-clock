@@ -191,19 +191,22 @@ Page({
     addNewTask: function(e) {
         const newTask = e.detail.task;
 
-        // 添加任务到tasks.js
         addTask(newTask);
 
-        // 更新页面数据
         this.setData({
-            cateArr: getTasks() // 重新获取任务数据
+            cateArr: getTasks()
         });
 
-        // 显示成功提示
         wx.showToast({
             title: '任务创建成功',
             icon: 'success',
             duration: 1500
+        });
+    },
+
+    goToGame: function() {
+        wx.navigateTo({
+            url: '/pages/game/game'
         });
     }
 })

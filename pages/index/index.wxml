@@ -33,6 +33,10 @@
         开始
     </view>
 
+    <view class="gameButton" bindtap="goToGame">
+        消消乐
+    </view>
+
     <!-- 任务弹窗组件 -->
     <add-task-modal
         show="{{showAddTaskModal}}"

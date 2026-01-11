@@ -1,0 +1,27 @@
+<view class="game-container">
+  <view class="score-board">
+    <text class="score-label">得分：</text>
+    <text class="score-value">{{score}}</text>
+  </view>
+
+  <view class="game-grid">
+    <view 
+      class="grid-item {{item.selected ? 'selected' : ''}} {{item.eliminated ? 'eliminated' : ''}}"
+      wx:for="{{grid}}"
+      wx:key="index"
+      style="background-color: {{item.color}}; animation-delay: {{item.delay}}ms"
+      bindtap="handleTap"
+      data-row="{{item.row}}"
+      data-col="{{item.col}}"
+    >
+      <text class="letter">{{item.letter}}</text>
+    </view>
+  </view>
+
+  <view class="control-buttons">
+    <button class="btn btn-primary" bindtap="startGame" wx:if="{{!gameStarted}}">开始游戏</button>
+    <button class="btn btn-warning" bindtap="pauseGame" wx:if="{{gameStarted && !isPaused}}">暂停</button>
+    <button class="btn btn-success" bindtap="resumeGame" wx:if="{{gameStarted && isPaused}}">继续</button>
+    <button class="btn btn-danger" bindtap="resetGame">重置</button>
+  </view>
+</view>
