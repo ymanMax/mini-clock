@@ -32,7 +32,7 @@ function getStoredTasks() {
         },
         {
             icon: "yule.png",
-            text: "娱乐",
+            text: "消消乐",
         }
     ];
 }
