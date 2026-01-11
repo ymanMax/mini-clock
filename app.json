@@ -1,10 +1,7 @@
 {
     "pages": [
         "pages/index/index",
-        "pages/logs/logs",
-        "pages/happy/happy",
-        "pages/snake/snake",
-        "pages/match/match"
+        "pages/logs/logs"
     ],
     "window": {
         "navigationBarTextStyle": "white",
@@ -22,12 +19,6 @@
                 "iconPath": "./static/clock_copy.png",
                 "selectedIconPath": "./static/clock.png"
 
-            },
-            {
-                "pagePath": "pages/happy/happy",
-                "text": "娱乐",
-                "iconPath": "./static/yule.png",
-                "selectedIconPath": "./static/yule.png"
             },
             {
                 "pagePath": "pages/logs/logs",
